@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MealPlanner.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Maui.Tabs"
+    xmlns:viewModels="clr-namespace:MealPlanner.ViewModels"
+    xmlns:views="clr-namespace:MealPlanner.Views"
+    x:DataType="viewModels:MainViewModel"
+    Shell.NavBarIsVisible="False">
+
+    <Grid
+        BackgroundColor="White"
+        ColumnSpacing="0"
+        RowDefinitions="*"
+        RowSpacing="0">
+
+        <tabs:ViewSwitcher
+            x:Name="Switcher"
+            Animate="True"
+            SelectedIndex="{Binding SelectedViewModelIndex}">
+            <views:MealsView />
+            <Grid>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Second page"
+                    VerticalOptions="Center" />
+            </Grid>
+            <Grid>
+                <Label
+                    Margin="20"
+                    HorizontalOptions="Center"
+                    Text="Third page"
+                    VerticalOptions="Center" />
+            </Grid>
+        </tabs:ViewSwitcher>
+        <tabs:TabHostView
+            Margin="0,0,0,20"
+            Padding="20,0"
+            BackgroundColor="#F6F6F6"
+            CornerRadius="20"
+            HeightRequest="60"
+            HorizontalOptions="Center"
+            IsSegmented="True"
+            Orientation="Horizontal"
+            SegmentedOutlineColor="#2D8F8F8F"
+            SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}"
+            VerticalOptions="End"
+            WidthRequest="350">
+            <tabs:SegmentedTabItem
+                FontFamily="MontserratMedium"
+                Label="Meals"
+                SelectedLabelColor="DarkOrange"
+                SelectedTabColor="Transparent"
+                UnselectedLabelColor="#998F8F8F" />
+            <tabs:SegmentedTabItem
+                FontFamily="MontserratMedium"
+                Label="Products"
+                SelectedLabelColor="DarkOrange"
+                SelectedTabColor="Transparent"
+                UnselectedLabelColor="#998F8F8F" />
+            <tabs:SegmentedTabItem
+                FontFamily="MontserratMedium"
+                Label="Settings"
+                SelectedLabelColor="DarkOrange"
+                SelectedTabColor="Transparent"
+                UnselectedLabelColor="#998F8F8F" />
+        </tabs:TabHostView>
+
+    </Grid>
+
+</ContentPage>
